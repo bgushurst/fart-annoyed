@@ -10,3 +10,8 @@ void Ball::Draw(Graphics & gfx)
 {
 	gfx.DrawCircle((int)position.x, (int)position.y, (int)radius, color);
 }
+
+void Ball::Update(float dt)
+{
+
+}

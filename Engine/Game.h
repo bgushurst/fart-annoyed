@@ -36,8 +36,8 @@ public:
 	Game( const Game& ) = delete;
 	Game& operator=( const Game& ) = delete;
 	void Go();
+
 private:
-	
 	void ComposeFrame();
 	void UpdateModel();
 
@@ -46,7 +46,6 @@ private:
 	/********************************/
 
 private:
-	
 	MainWindow& wnd;
 	Graphics gfx;
 
@@ -56,7 +55,7 @@ private:
 
 	static constexpr float brickHeight = 24.0f;
 	static constexpr float brickWidth = 40.0f;
-	static constexpr int nBricksAcross = 10;
+	static constexpr int nBricksAcross = 18;
 	static constexpr int nBricksDown = 4;
 	static constexpr int nBricks = nBricksAcross * nBricksDown;
 

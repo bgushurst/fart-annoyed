@@ -14,6 +14,6 @@ private:
 public:
 	Ball( Vec2 position, Vec2 velocity);
 	void Draw(Graphics& gfx);
-	void Update(float td);
+	void Update(float dt);
 };
 

@@ -2,7 +2,8 @@
 
 Brick::Brick(const RectF& rect, Color color) :
 	rect(rect),
-	color(color)
+	color(color),
+	isDestroyed(false)
 {
 }
 
@@ -10,7 +11,7 @@ void Brick::Draw(Graphics& gfx)
 {
 	if (!isDestroyed)
 	{
-		gfx.DrawRect(rect, color);
+		gfx.DrawRect(rect.GetExpanded(-padding), color);
 	}
 }
 

@@ -24,13 +24,12 @@
 Game::Game( MainWindow& wnd ) :
 	wnd( wnd ),
 	gfx( wnd ),
-	walls(0.0f, 0.0f, (float)gfx.ScreenWidth, (float)gfx.ScreenHeight),
-	ball(Vec2(300.0f, 300.0f), Vec2(300.0f, 300.0f))
+	ball(Vec2(300.0f, 300.0f), Vec2(300.0f, 300.0f)),
+	walls(0.0f, 0.0f, (float)gfx.ScreenWidth, (float)gfx.ScreenHeight)
 {
+
 	const Color colors[nBricksDown] = { Colors::Red, Colors::Green, Colors::Blue, Colors::Magenta };
-
 	Vec2 topLeft(0.0f, 0.0f);
-
 	int i = 0;
 
 	for (int y = 0; y < nBricksDown; y++)
@@ -61,6 +60,16 @@ void Game::UpdateModel()
 	// Calculate delta time
 	float dt = ft.Mark();
 
+	ball.Update(dt);
+
+	for (Brick& b : bricks)
+	{
+		if (b.DoBallCollission(ball))
+		{
+			// Play sound
+			break;
+		}
+	}
 
 }
 
