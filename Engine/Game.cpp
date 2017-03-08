@@ -21,11 +21,31 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-Game::Game( MainWindow& wnd )
-	:
+Game::Game( MainWindow& wnd ) :
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	walls(0.0f, 0.0f, (float)gfx.ScreenWidth, (float)gfx.ScreenHeight),
+	ball(Vec2(300.0f, 300.0f), Vec2(300.0f, 300.0f))
 {
+	const Color colors[nBricksDown] = { Colors::Red, Colors::Green, Colors::Blue, Colors::Magenta };
+
+	Vec2 topLeft(0.0f, 0.0f);
+
+	int i = 0;
+
+	for (int y = 0; y < nBricksDown; y++)
+	{
+		const Color c = colors[y];
+		for (int x = 0; x < nBricksAcross; x++)
+		{
+			bricks[i] = Brick(
+				RectF(topLeft + Vec2(x * brickWidth, y * brickHeight), brickWidth, brickHeight),
+				c
+			);
+			i++;
+		}
+	}
+
 }
 
 void Game::Go()
@@ -38,8 +58,13 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	// Calculate delta time
+	float dt = ft.Mark();
+
+
 }
 
 void Game::ComposeFrame()
 {
+	
 }
